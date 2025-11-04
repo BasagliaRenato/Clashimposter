@@ -1,0 +1,76 @@
+* {
+    padding: 0;
+    font-family: 'Clash_regular';
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@font-face{
+    font-family: 'Clash_regular';
+    src: url(Fonts/Clash_Regular.otf);
+}
+#logo{
+    margin-top: 20px;
+}
+#tela {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+#texto {
+    font-family: 'Clash_regular';
+    margin-top: 50px;
+
+}
+#jogadores {
+    margin-top: 50px;
+}
+select {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    background-color: #0b74b9;
+    color: yellow;
+
+}
+#play{
+    display: block;
+    margin-top: 50px;
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+    background-color: #0b74b9;
+    color: yellow;
+}
+#passar{
+    margin-top: 50px;
+    height: 100px;
+    width: 100px;
+    border-radius: 15px;
+    background-color: #0b74b9;
+    color: yellow;
+}
+#reset{
+     width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    background-color: #0b74b9;
+    color: yellow;
+}
+#tela {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#passar, #reset, #play {
+    display: block;
+    margin: 20px auto;
+}
