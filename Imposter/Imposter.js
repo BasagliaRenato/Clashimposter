@@ -2,6 +2,7 @@ const selectJogadores = document.getElementById("jogadores");
 let numeroJogadores = 0;
 let palavraescolhida = "";
 let impostor;
+let mostrarbtn = document.getElementById("mostrar");
 let resetbtn= document.getElementById("reset");
 let playbtn = document.getElementById("play");
  let palavras = ["Cavaleiro", "Bruxa", "Mosqueteira", "Pekka", "Mini-pekka", "Fantasma-Real", "Dragão-Elétrico", "Cemitério", "Bruxa-mãe", "Guardas-Reais", "Porcos-Reais","Mineiro", "Esqueletos",
@@ -19,7 +20,6 @@ selectJogadores.addEventListener("change", function(){
    // console.log(`Número de jogadores: ${numeroJogadores}`);
 })
 
-
 playbtn.onclick = function() {
     start();
     sorteio();
@@ -30,6 +30,7 @@ playbtn.onclick = function() {
   //  let i = Math.floor(Math.random() * numeroJogadores) + 1;
   //  console.log("o impostor é o jogador número: " + i);
 }
+
 function start(){
     jogadores = [];
     for(let x = 1; x <= numeroJogadores; x++){
@@ -78,11 +79,18 @@ function proximo(){
     if(jogadorAtual > numeroJogadores){
         texto.innerText = "Hora da discussão"
         passar.style.display = "none";
-        resetbtn.style.display = "block";
+        mostrarbtn.style.display = "block";
     } else {
         mensagem();
     }
 }
+    mostrarbtn.onclick = function()
+    {
+        texto.innerText = `O impostor era o jogador número ${impostor}`;
+        mostrarbtn.style.display = "none";
+        resetbtn.style.display = "block";
+    }
+
 resetbtn.onclick = function() {
 
     numeroJogadores = 0;
@@ -95,4 +103,5 @@ resetbtn.onclick = function() {
     passar.style.display = "block";
     texto.innerText = "";
     selectJogadores.value = "0";
+    
 }

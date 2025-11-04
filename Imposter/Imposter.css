@@ -58,12 +58,13 @@ select {
     background-color: #0b74b9;
     color: yellow;
 }
-#reset{
-     width: 60px;
-    height: 60px;
+#reset, #mostrar{
+    width: 80px;
+    height: 80px;
     border-radius: 15px;
     background-color: #0b74b9;
     color: yellow;
+    display: none;
 }
 #tela {
     display: none;
