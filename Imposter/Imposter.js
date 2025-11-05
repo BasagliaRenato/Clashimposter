@@ -17,7 +17,7 @@ let playbtn = document.getElementById("play");
     {nome:"Bruxa", img:"Cartas/bruxa.png"},
     {nome:"Goblins lanceiros", img:"Cartas/goblinlanceiro.png"},
     {nome:"Goblins", img:"Cartas/goblin.png"},
-    {nome:"Valquíria", img:"valquiria.png"},
+    {nome:"Valquíria", img:"Cartas/valquiria.png"},
     {nome:"Barril de goblins", img:"Cartas/barrilgoblins.png"},
     {nome:"Esqueletos", img:"Cartas/esqueletos.png"},
     {nome:"Servos", img:"Cartas/servos.png"},
@@ -195,3 +195,4 @@ resetbtn.onclick = function() {
     selectJogadores.value = "0";
     
 }
+
