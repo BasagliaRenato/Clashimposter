@@ -1,19 +1,105 @@
 const selectJogadores = document.getElementById("jogadores");
 let numeroJogadores = 0;
-let palavraescolhida = "";
 let impostor;
 let mostrarbtn = document.getElementById("mostrar");
 let resetbtn= document.getElementById("reset");
 let playbtn = document.getElementById("play");
- let palavras = ["Cavaleiro", "Bruxa", "Mosqueteira", "Pekka", "Mini-pekka", "Fantasma-Real", "Dragão-Elétrico", "Cemitério", "Bruxa-mãe", "Guardas-Reais", "Porcos-Reais","Mineiro", "Esqueletos",
-        "Espírito de fogo", "Espírito elétrico", "espírito de gelo", "Goblins", "Goblins lanceiros", "Bombardeiro", "Morcegos", "Berserker", "Arqueiras", "Servos", "Gangue de goblins", "Pirotécnica", 
-        "Entrega Real", "Dragões esqueletos", "Bárbaros", "Horda de servos", "Patifes", "Gigante real", "Bárbaros de elite", "Espírito de cura", "Golem de gelo", "Arbusto Traiçoeiro", "Mega servo",
-        "Goblin com dardo", "Golem de elixir", "Valquíria", "Aríate de batalha", "Máquina voadora", "Curandeira", "Fornalha", "Goblin demolidor", "Gigante", "Mago", "Três mosqueteiras", "Barril de bárbaros",
-        "Destruidores de muro", "Guardas", "Príncipe das trevas", "Gigante das runas", "Caçador", "Balão", "Lançador", "Executor", "Gigante esqueleto", "Goblin Gigante", "Gigante elétrico", "Golem",
-        "Princesa", "Mago de gelo", "Dragão inferno", "Mago elétrico", "Fênix", "Domadora de carneiro", "Máquina goblin", "Spark", "Mega-cavaleiro", "Bandida", "Pescador", "Arqueiro mágico", "Lenhador",
-        "Bruxa sombria", "Lava Hound", "Corredor", "barril de goblins", "Bebe dragão", "Exército de esqueletos"
+   let cartas = [
+    {nome: "Cavaleiro", img: "Cartas/cavaleiro.png"},
+    {nome: "Bombardeiro", img:"Cartas/bombardeiro.png"},
+    {nome:"Arqueiras", img:"Cartas/arqueiras.png"},
+    {nome:"Mini P.E.K.K.A", img:"Cartas/minipekka.png"},
+    {nome:"Mosqueteira", img:"Cartas/mosqueteira.png"},
+    {nome:"Gigante", img:"Cartas/gigante.png"},
+    {nome:"Príncipe", img:"Cartas/principe.png"},
+    {nome:"Bebe dragão", img:"Cartas/bebedragao.png"},
+    {nome:"Exército de esqueletos", img:"Cartas/exercito.png"},
+    {nome:"Bruxa", img:"Cartas/bruxa.png"},
+    {nome:"Goblins lanceiros", img:"Cartas/goblinlanceiro.png"},
+    {nome:"Goblins", img:"Cartas/goblin.png"},
+    {nome:"Valquíria", img:"valquiria.png"},
+    {nome:"Barril de goblins", img:"Cartas/barrilgoblins.png"},
+    {nome:"Esqueletos", img:"Cartas/esqueletos.png"},
+    {nome:"Servos", img:"Cartas/servos.png"},
+    {nome:"Esqueleto gigante", img:"Cartas/esqueletogigante.png"},
+    {nome:"Balão", img:"Cartas/balao.png"},
+    {nome:"Bárbaros", img:"Cartas/barbaros.png"},
+    {nome:"horda de servos", img:"Cartas/horda.png"},
+    {nome:"Corredor", img:"Cartas/corredor.png"},
+    {nome:"P.E.K.K.A", img:"Cartas/pekka.png"},
+    {nome:"Mago", img:"Cartas/mago.png"},
+    {nome:"Golem", img:"Cartas/golem.png"},
+    {nome:"Gigante real", img:"Cartas/gigantereal.png"},
+    {nome:"três mosqueteiras", img:"Cartas/tresmosqueteiras.png"},
+    {nome:"Príncipe das trevas", img:"Cartas/principedastrevas.png"},
+    {nome:"Mago de gelo", img:"Cartas/magodegelo.png"},
+    {nome:"Princesa", img:"Cartas/princesa.png"},
+    {nome:"Fornalha", img:"Cartas/fornalha.png"},
+    {nome:"Espírito de fogo", img:"Cartas/espiritodefogo.png"},
+    {nome:"Guardas", img:"Cartas/guardas.png"},
+    {nome:"Lava hound", img:"Cartas/lavahound.png"},
+    {nome:"Mineiro", img:"Cartas/mineiro.png"},
+    {nome:"Sparky", img:"Cartas/sparky.png"},
+    {nome:"Lançador", img:"Cartas/lancador.png"},
+    {nome:"Espírito de gelo", img:"Cartas/espiritodegelo.png"},
+    {nome:"Lenhador", img:"Cartas/lenhador.png"},
+    {nome:"Mega servo", img:"Cartas/megaservo.png"},
+    {nome:"Dragão infernal", img:"Cartas/dragaoinfernal.png"},
+    {nome:"Golem de gelo", img:"Cartas/gelemdegelo.png"},
+    {nome:"Cemitério", img:"Cartas/cemiterio.png"},
+    {nome:"Bárbaros de elite", img:"Cartas/barbarosdeelite.png"},
+    {nome:"Mago elétrico", img:"Cartas/magoeletrico.png"},
+    {nome:"Goblin com dardo", img:"Cartas/goblincomdardo.png"},
+    {nome:"Executor", img:"Cartas/executor.png"},
+    {nome:"Aríate de batalha", img:"Cartas/ariate.png"},
+    {nome:"Guangue de goblins", img:"Cartas/gangue.png"},
+    {nome:"Bandida", img:"Cartas/bandida.png"},
+    {nome:"Bruxa sombria", img:"Cartas/bruxasombria.png"},
+    {nome:"Morcegos", img:"Cartas/morcegos.png"},
+    {nome:"Máquina voadora", img:"Cartas/maquinavoadora.png"},
+    {nome:"Carrinho de canhão", img:"Cartas/carrinho.png"},
+    {nome:"Barril de esqueletos", img:"Cartas/barrilesqueletos.png"},
+    {nome:"Megacavaleiro", img:"Cartas/megacavaleiro.png"},
+    {nome:"Eletrocutadores", img:"Cartas/eletrocutadores.png"},
+    {nome:"Caçador", img:"Cartas/cacador.png"},
+    {nome:"Fantasma real", img:"Cartas/fantasmareal.png"},
+    {nome:"Barril de bárbaros", img:"Cartas/barrilbarbaros.png"},
+    {nome:"Patifes", img:"Cartas/patifes.png"},
+    {nome:"Porcos reais", img:"Cartas/porcos.png"},
+    {nome:"Recrutas reais", img:"Cartas/recrutas.png"},
+    {nome:"Goblin gigante", img:"Cartas/goblingigante.png"},
+    {nome:"Dragão elétrico", img:"Cartas/dragaoeletrico.png"},
+    {nome:"Domadora de carneiros", img:"Cartas/domadora.png"},
+    {nome:"Destruidores de muro", img:"Cartas/destruidores.png"},
+    {nome:"Jaula de goblin", img:"Cartas/jaula.png"},
+    {nome:"Pescador", img:"Cartas/pescador.png"},
+    {nome:"Golem de elixir", img:"Cartas/golemdeelixir.png"},
+    {nome:"Curadora guerreira", img:"Cartas/curadora.png"},
+    {nome:"Pirotécnica", img:"Cartas/pirotecnica.png"},
+    {nome:"Encomenda real", img:"Cartas/encomenda.png"},
+    {nome:"Espírito de cura", img:"Cartas/espiritodecura.png"},
+    {nome:"Dragões esqueltos", img:"Cartas/dragoesesqueletos.png"},
+    {nome:"Gigante elétrico", img:"Cartas/giganteeletrico.png"},
+    {nome:"Espírito elétrico", img:"Cartas/espiritoeletrico.png"},
+    {nome:"Bruxa-Mãe", img:"Cartas/bruxamae.png"},
+    {nome:"Escavadeira de goblins", img:"Cartas/broca.png"},
+    {nome:"Cavaleiro dourado", img:"Cartas/cavaleirodourado.png"},
+    {nome:"Rainha arqueira", img:"Cartas/rainhaarqueira.png"},
+    {nome:"Rei esqueleto", img:"Cartas/reiesqueleto.png"},
+    {nome:"Mineiro bombado", img:"Cartas/mineirobombado.png"},
+    {nome:"Monge", img:"Cartas/monge.png"},
+    {nome:"Fênix", img:"Cartas/fenix.png"},
+    {nome:"Pequeno príncipe", img:"Cartas/pequenoprincipe.png"},
+    {nome:"Goblin demolidor", img:"Cartas/goblindemolidor.png"},
+    {nome:"Máquina goblin", img:"Cartas/maquinagoblin.png"},
+    {nome:"Arbusto traiçoeiro", img:"Cartas/arbusto.png"},
+    {nome:"Goblinstein", img:"Cartas/goblinstein.png"},
+    {nome:"Gigante das runas", img:"Cartas/gigantedasrunas.png"},
+    {nome:"berserker", img:"Cartas/berserker.png"},
+    {nome:"Imperatriz espiritual", img:"Cartas/imperatriz.png"},
 
-    ];
+   ]
+   let cartaescolhida;
     let jogadores = [];
 selectJogadores.addEventListener("change", function(){
     numeroJogadores = Number(this.value);
@@ -23,7 +109,7 @@ selectJogadores.addEventListener("change", function(){
 playbtn.onclick = function() {
     start();
     sorteio();
-    palavrasorteio();
+    cartasorteio();
     iniciar();
     playbtn.style.display = "none"
     selectJogadores.style.display = "none";
@@ -41,13 +127,13 @@ function start(){
 function sorteio(){
     let i = Math.floor(Math.random() * jogadores.length);
     impostor = jogadores[i];
-    console.log("o impostor é o jogador: " + impostor);
+   // console.log("o impostor é o jogador: " + impostor);
 }
-function palavrasorteio(){
+function cartasorteio(){
    
-    let r = Math.floor(Math.random() * palavras.length);
-    palavraescolhida = palavras[r];
-    console.log("palavra escolhida: " + palavraescolhida);
+    let r = Math.floor(Math.random() * cartas.length);
+    cartaescolhida = cartas[r];
+    console.log("palavra escolhida: " + cartaescolhida.nome);
 }
 let jogadorAtual = 1;
 const tela = document.getElementById("tela") ;
@@ -68,12 +154,16 @@ function mostrar(){
     if (jogadorAtual === impostor){
         texto.innerText = "Você é o impostor!"
     } else {
-        texto.innerText = palavraescolhida;
+        texto.innerHTML = `
+        <p>${cartaescolhida.nome}</p>
+        <img src="${cartaescolhida.img}" class="imgcarta">
+    `;
     }
     passar.innerText = "próximo jogador"
     passar.onclick = proximo;
 
 }
+
 function proximo(){
     jogadorAtual++;
     if(jogadorAtual > numeroJogadores){

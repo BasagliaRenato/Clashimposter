@@ -95,3 +95,7 @@ select {
     font-size: 14px;
     font-family: 'Clash_regular';
 }
+button:active {
+    transform: scale(0.95);
+    transition: all ease 0.3s;
+}
