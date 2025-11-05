@@ -99,5 +99,7 @@ select {
 button:active {
     transform: scale(0.95);
     transition: all ease 0.3s;
-
+}
+img{
+    height: 100%;
 }
