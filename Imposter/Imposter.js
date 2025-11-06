@@ -24,7 +24,7 @@ let playbtn = document.getElementById("play");
     {nome:"Servos", img:"Cartas/servos.png"},
     {nome:"Esqueleto gigante", img:"Cartas/esqueletogigante.png"},
     {nome:"Balão", img:"Cartas/balao.png"},
-    {nome:"Bárbaros", img:"Cartas/barbaros.png"},
+    {nome:"Bárbaros", img:"Cartas/barbaro.png"},
     {nome:"horda de servos", img:"Cartas/horda.png"},
     {nome:"Corredor", img:"Cartas/corredor.png"},
     {nome:"P.E.K.K.A", img:"Cartas/pekka.png"},
@@ -46,7 +46,7 @@ let playbtn = document.getElementById("play");
     {nome:"Lenhador", img:"Cartas/lenhador.png"},
     {nome:"Mega servo", img:"Cartas/megaservo.png"},
     {nome:"Dragão infernal", img:"Cartas/dragaoinfernal.png"},
-    {nome:"Golem de gelo", img:"Cartas/gelemdegelo.png"},
+    {nome:"Golem de gelo", img:"Cartas/golemdegelo.png"},
     {nome:"Cemitério", img:"Cartas/cemiterio.png"},
     {nome:"Bárbaros de elite", img:"Cartas/barbarosdeelite.png"},
     {nome:"Mago elétrico", img:"Cartas/magoeletrico.png"},
@@ -218,4 +218,5 @@ resetbtn.onclick = function() {
     textoimpostor.innerText = "Modo impostor secreto";
     
 }
+
 
