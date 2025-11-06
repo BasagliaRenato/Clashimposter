@@ -100,3 +100,12 @@ button:active {
     transform: scale(0.95);
     transition: all ease 0.3s;
 }
+#secreto {
+    position: absolute;
+    bottom: 300px;
+}
+
+#secretoTexto {
+    position: absolute;
+    bottom: 330px;
+}
