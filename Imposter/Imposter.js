@@ -1,6 +1,7 @@
 const selectJogadores = document.getElementById("jogadores");
 let numeroJogadores = 0;
 let impostor;
+const secreto = document.getElementById("secreto");
 let mostrarbtn = document.getElementById("mostrar");
 let resetbtn= document.getElementById("reset");
 let playbtn = document.getElementById("play");
@@ -62,7 +63,7 @@ let playbtn = document.getElementById("play");
     {nome:"Megacavaleiro", img:"Cartas/megacavaleiro.png"},
     {nome:"Eletrocutadores", img:"Cartas/eletrocutadores.png"},
     {nome:"Caçador", img:"Cartas/cacador.png"},
-    {nome:"Fantasma real", img:"Cartas/fantasmareal.png"},
+    {nome:"Fantasma real", img:"Cartas/fantasma real.png"},
     {nome:"Barril de bárbaros", img:"Cartas/barrilbarbaros.png"},
     {nome:"Patifes", img:"Cartas/patifes.png"},
     {nome:"Porcos reais", img:"Cartas/porcos.png"},
@@ -78,7 +79,7 @@ let playbtn = document.getElementById("play");
     {nome:"Pirotécnica", img:"Cartas/pirotecnica.png"},
     {nome:"Encomenda real", img:"Cartas/encomenda.png"},
     {nome:"Espírito de cura", img:"Cartas/espiritodecura.png"},
-    {nome:"Dragões esqueltos", img:"Cartas/dragoesesqueletos.png"},
+    {nome:"Dragões esqueletos", img:"Cartas/dragoesesqueletos.png"},
     {nome:"Gigante elétrico", img:"Cartas/giganteeletrico.png"},
     {nome:"Espírito elétrico", img:"Cartas/espiritoeletrico.png"},
     {nome:"Bruxa-Mãe", img:"Cartas/bruxamae.png"},
@@ -100,10 +101,11 @@ let playbtn = document.getElementById("play");
 
    ]
    let cartaescolhida;
+   let cartaimpostor;
+   const textoimpostor = document.getElementById("secretoTexto");
     let jogadores = [];
 selectJogadores.addEventListener("change", function(){
     numeroJogadores = Number(this.value);
-   // console.log(`Número de jogadores: ${numeroJogadores}`);
 })
 
 playbtn.onclick = function() {
@@ -111,29 +113,35 @@ playbtn.onclick = function() {
     sorteio();
     cartasorteio();
     iniciar();
+    if(secreto.checked){
+        cartasorteioimpostor();
+    }
     playbtn.style.display = "none"
     selectJogadores.style.display = "none";
-  //  let i = Math.floor(Math.random() * numeroJogadores) + 1;
-  //  console.log("o impostor é o jogador número: " + i);
+    secreto.style.display="none";
+    textoimpostor.innerText="";
 }
 
 function start(){
     jogadores = [];
     for(let x = 1; x <= numeroJogadores; x++){
         jogadores.push(x);
-     //   console.log(jogadores);
     }
 }
 function sorteio(){
     let i = Math.floor(Math.random() * jogadores.length);
     impostor = jogadores[i];
-   // console.log("o impostor é o jogador: " + impostor);
 }
 function cartasorteio(){
    
     let r = Math.floor(Math.random() * cartas.length);
     cartaescolhida = cartas[r];
     console.log("palavra escolhida: " + cartaescolhida.nome);
+}
+function cartasorteioimpostor(){
+    let r = Math.floor(Math.random() * cartas.length);
+    cartaimpostor = cartas[r];
+    console.log("palavra escolhida: " + cartaimpostor.nome);
 }
 let jogadorAtual = 1;
 const tela = document.getElementById("tela") ;
@@ -151,13 +159,27 @@ function mensagem(){
     passar.onclick = mostrar;
 }
 function mostrar(){
+    if(secreto.checked){
     if (jogadorAtual === impostor){
+        texto.innerHTML = `
+        <p>${cartaimpostor.nome}</p>
+        <img src="${cartaimpostor.img}" class="imgcarta">
+    `;
+    } else {
+        texto.innerHTML = `
+        <p>${cartaescolhida.nome}</p>
+        <img src="${cartaescolhida.img}" class="imgcarta">
+    `;
+    }
+    } else {
+        if (jogadorAtual === impostor){
         texto.innerText = "Você é o impostor!"
     } else {
         texto.innerHTML = `
         <p>${cartaescolhida.nome}</p>
         <img src="${cartaescolhida.img}" class="imgcarta">
     `;
+    }
     }
     passar.innerText = "próximo jogador"
     passar.onclick = proximo;
@@ -192,7 +214,7 @@ resetbtn.onclick = function() {
     resetbtn.style.display = "none";
     passar.style.display = "block";
     texto.innerText = "";
-    selectJogadores.value = "0";
+    secreto.style.display = "block";
+    textoimpostor.innerText = "Modo impostor secreto";
     
 }
-
