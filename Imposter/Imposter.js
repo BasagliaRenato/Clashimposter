@@ -205,7 +205,7 @@ function proximo(){
 
 resetbtn.onclick = function() {
 
-    numeroJogadores = 0;
+//    numeroJogadores = 0;
     jogadores = [];
     jogadorAtual = 1;
     selectJogadores.style.display = "block";
@@ -218,3 +218,4 @@ resetbtn.onclick = function() {
     textoimpostor.innerText = "Modo impostor secreto";
     
 }
+
