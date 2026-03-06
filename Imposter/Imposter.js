@@ -100,6 +100,7 @@ let playbtn = document.getElementById("play");
    const textoimpostor = document.getElementById("secretoTexto");
    const dicas = document.getElementById("dicas");
     let jogadores = [];
+    const divisor = document.getElementById("divisor2");
 selectJogadores.addEventListener("change", function(){
     numeroJogadores = Number(this.value);
 })
@@ -118,6 +119,7 @@ playbtn.onclick = function() {
     dica.style.display="none";
     dicas.innerText="";
     textoimpostor.innerText="";
+    divisor.style.display="none";
 }
 
 function start(){
@@ -222,5 +224,6 @@ resetbtn.onclick = function() {
     dica.style.display="block";
     textoimpostor.innerText = "Modo impostor secreto";
     dicas.innerText = "dicas"
+    divisor.style.display="block";
     
 }
