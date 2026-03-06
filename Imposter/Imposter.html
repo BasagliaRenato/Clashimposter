@@ -7,10 +7,13 @@
     <title>CR imposter game</title>
 </head>
 <body>
-
-    <h1 id="logo">Clash Royale Imposter game</h1>
+<header>
+    <h1 id="logo">Jogo do Impostor</h1>
+    <div id="divisor"></div>
+    </header>
+    <div class="menu">
    <select id="jogadores">
-    <option value="0">número de jogadores</option>
+    <option value="0">jogadores</option>
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
@@ -21,15 +24,18 @@
 </select>
 
 <button id="play">Iniciar Partida</button>
-
+</div>
 <div id="tela" style="display:none;">
     <p id="texto"></p>
     <button id="passar">Ver carta</button>
 </div>
     <button id="mostrar">Revelar impostor</button>
     <button id="reset" style="display: none;">reset</button>
+    <div id="divisor2"></div>
     <input type="checkbox" id="secreto">
     <label for="secreto" id="secretoTexto">Modo impostor secreto</label>
+    <input type="checkbox" id="dica">
+    <label for="dica" id="dicas">Dicas</label>
     
         <img id="logotipo" src="Images/clashroyale_logo_version_02.webp" alt="">
         <footer>
